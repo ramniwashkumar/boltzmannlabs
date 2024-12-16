@@ -1,0 +1,177 @@
+@import url(
+  "https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  );
+@import url(
+  "https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+  );
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  .text-shadow-md {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+
+*{
+    font-family: "poppins";
+    outline: none;
+    color:'#FFF3F3'
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 5s linear infinite;
+  }
+}
+
+body{
+  /* background-color: #FFF3F3; */
+  --grid-size: 30px;
+  --grid-strength: 1px;
+  --grid-dash: 10px;
+  --grid-gap: 2px;
+  --grid-color: #c9acac;
+  --paper-color:  white;
+
+background-color: var(--paper-color);
+
+}
+  
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+ /* Style for the circle */
+.circle {
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background-color: lightblue;
+    position: absolute;
+    bottom: -550px;
+    left: -150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Style for the triangle on the right edge */
+  .triangle {
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 100px solid lightblue; /* Triangle color */
+    position: absolute;
+    right: 35px; /* Adjust to place the larger triangle outside the circle */
+    top: 70px;
+    transform: rotate(320deg);
+    
+    /* Animation */
+    animation: rotateTriangle 4s infinite linear;
+  }
+  
+  /* Keyframes for rotating animation */
+  @keyframes rotateTriangle {
+    0% {
+      transform: rotate(320deg);
+    }
+    50% {
+      transform: rotate(340deg); /* Rotate a bit more to add movement */
+    }
+    100% {
+      transform: rotate(320deg);
+    }
+  }
+  
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+  }
+
+  .swiper-container{
+    overflow: visible!important;
+  }
+
+.swiper-pagination{
+  position: absolute!important;
+  bottom: 0px!important;
+}
+  /* More specific targeting for Swiper pagination */
+  .swiper-pagination-bullet {
+    width: 100px !important;       /* Rectangle width */
+    height: 5px !important;      /* Rectangle height */
+    background-color: gray !important;
+    border-radius: 0px !important; /* Slight rounding for corners */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: #6a5acd !important; /* Active color */
+  }
+
+
+/* Ensure pagination outside Swiper container */
+.custom-swiper-pagination {
+  position: relative;
+  bottom: 0;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+  width: 100px !important;       /* Rectangle width */
+  height: 5px !important;        /* Rectangle height */
+  background-color: gray !important;
+  border-radius: 0 !important;   /* Rectangle shape */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #6a5acd !important; /* Active color */
+}
+
+.verticalrotate{
+  animation: spin 5s linear infinite;
+}
+.verticalrotaterev{
+  animation: spinrev 5s linear infinite;
+}
+
+
+/* In your global styles (e.g., globals.css or App.css) */
+@keyframes draw-line {
+  0% {
+    stroke-dashoffset: 100%; /* Fully hidden */
+  }
+  100% {
+    stroke-dashoffset: -100%; /* Move past the line to the left */
+  }
+}
+
+.animate-drawing {
+  animation: draw-line 50s linear infinite; /* Slower, continuous movement */
+  stroke-dasharray: 4; /* Make this value large enough to cover the line's length */
+  stroke-dashoffset: 100%; /* Start with the line completely hidden */
+}
